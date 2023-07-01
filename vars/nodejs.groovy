@@ -12,11 +12,11 @@ def call() {
     pipeline {
         agent {  label 'WS' }
         stages {      
-                                          
+
             stage('Lint Checks') {
                 steps { 
                     script {
-                        nodejs.lintChecks()
+                        lintChecks()
                     }
                 }
             }
