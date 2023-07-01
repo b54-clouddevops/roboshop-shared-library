@@ -42,3 +42,9 @@ The directory structure of a Shared Library repository is as follows:
 ```
 
 Reference : `https://www.jenkins.io/doc/book/pipeline/shared-libraries/`
+
+
+### When to call a function along with file name and when can we access it directly.
+
+*** When you can to access a function in a file sample, and if you're referring from somewhere, then you call it as `sample.functionName()`
+*** When you can to access a function in a file sample, and if you're referring from the same file, then you call it as `functionName()`
