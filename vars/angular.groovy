@@ -1,6 +1,6 @@
 def lintChecks(){
     sh ''' 
-        echo Installing JSLint for ${COMPONENT}
+        echo Installing AngularLint for ${COMPONENT}
         echo lint checks completed for ${COMPONENT}
 
     ''' 
