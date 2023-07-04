@@ -13,7 +13,7 @@ def call(COMPONENT) {
         agent {  label 'WS' }
         environment {
             SONARCRED = credentials('SONARCRED') 
-            SONATURL  = "172.31.86.248"
+            SONARURL  = "172.31.86.248"
         }
         stages {      
 
