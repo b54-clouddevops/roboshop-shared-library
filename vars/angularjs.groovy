@@ -22,7 +22,10 @@ def call(COMPONENT) {
 
             stage('Code Quality Analysis') {
                 steps {                
-                        sh "echo Code Quality Analysis Is In Place"
+                    script {
+                        env.ARGS="-Dsonar.sources=."              
+                        common.sonarChecks()
+                    }
                 }
             }
 
