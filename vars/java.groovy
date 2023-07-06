@@ -3,7 +3,6 @@ def lintChecks(){
         echo Performing lintCheck for ${COMPONENT}
         mvn checkstyle:check || true                          
         echo lint checks completed for ${COMPONENT}
-
     ''' 
 }
 
