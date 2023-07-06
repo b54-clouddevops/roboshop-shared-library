@@ -71,7 +71,7 @@ def call(COMPONENT) {
                     script {
                         env.UPLOAD_STATUS=sh (returnStdout: true, script: 'curl -s -L http://${NEXUSURL}:8081/service/rest/repository/browse/${COMPONENT}/ | grep ${COMPONENT}-${TAG_NAME}')
                     }
-                    sh "Upload Status Is ${UPLOAD_STATUS}"
+                    sh "echo Upload Status Is ${UPLOAD_STATUS}"
                 }
             }
 
