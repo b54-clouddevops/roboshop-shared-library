@@ -70,7 +70,7 @@ def call(COMPONENT) {
                     sh '''
                         echo Preparing Artifacts for ${COMPONENT}
                         npm install
-                        zip ${COMPONENT}.zip node_modules server.js
+                        zip ${COMPONENT}-${TAG_NAME}.zip node_modules server.js
                        
                        '''
                 }
