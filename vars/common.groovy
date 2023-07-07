@@ -105,9 +105,9 @@ def artifacts() {
                 stage('Upload Artifacts') {
                         if(env.APP_TYPE == "nodejs"){
                                 sh '''
-                                        echo Preparing Artifact for ${COMPONENT}
-                                        npm install
-                                        zip ${COMPONENT}-${TAG_NAME}.zip node_modules server.js                        
+                                        echo Uploading ${COMPONENT} Artifacts To Nexus
+                                        curl -f -v -u ${NEXUS_USR}:${NEXUS_PSW} --upload-file ${COMPONENT}-${TAG_NAME}.zip  http://172.31.92.189:8081/repository/${COMPONENT}/${COMPONENT}-${TAG_NAME}.zip
+                                        echo Uploading ${COMPONENT} Artifacts To Nexus is Completed                   
                                 '''
                         }
                 
