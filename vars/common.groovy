@@ -43,6 +43,8 @@ def sonarChecks(){
         }
 }
 
+// This is how we can handle scripted pipeline for paralle stages
+// Ref: https://stackoverflow.com/questions/57485965/how-can-i-create-parallel-stages-in-jenkins-scripted-pipeline
 
 def testCases() {
         stage('Test Cases') {
