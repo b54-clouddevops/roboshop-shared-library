@@ -76,7 +76,10 @@ def call(COMPONENT) {
             }
 
             stage('Prepare Artifacts') {
-                when { expression { env.TAG_NAME != null } }
+                when { 
+                    expression { env.TAG_NAME != null } 
+                    expression { env.UPLOAD_STATUS == "" }
+                }
                 steps {
                     sh '''
                         echo Preparing Artifacts for ${COMPONENT}
@@ -88,7 +91,10 @@ def call(COMPONENT) {
             }
 
             stage('Upload Artifacts') {
-                when { expression { env.TAG_NAME != null } }
+                when { 
+                    expression { env.TAG_NAME != null } 
+                    expression { env.UPLOAD_STATUS == "" }
+                }
                 steps {
                     sh  '''
                         echo Uploading ${COMPONENT} Artifacts To Nexus
