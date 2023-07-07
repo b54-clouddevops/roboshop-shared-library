@@ -66,3 +66,55 @@ def testCases() {
                 parallel(stages)
         }                        
 }
+
+
+
+artifacts() {
+        
+        stage('Validate Artifact Version') {
+            env.UPLOAD_STATUS=sh(returnStdout: true, script: 'curl -L -s http://${NEXUSURL}:8081/service/rest/repository/browse/${COMPONENT} | grep ${COMPONENT}-${TAG_NAME}.zip || true')
+            print UPLOAD_STATUS
+        }                    
+                
+        if(env.UPLOAD_STATUS == "") {
+                stage('Prepare Artifacts') {
+                        if(env.APP_TYPE == "nodejs"){
+                                sh '''
+                                        echo Preparing Artifacts for ${COMPONENT}
+                                        npm install
+                                        zip ${COMPONENT}-${TAG_NAME}.zip node_modules server.js                        
+                                '''
+                        }
+                        else if(env.APP_TYPE == "python"){
+                                sh '''
+                                        echo Preparing Artifacts for ${COMPONENT}                      
+                                '''
+                        }
+                        else if(env.APP_TYPE == "java"){
+                                sh '''
+                                        echo Preparing Artifacts for ${COMPONENT}                      
+                                '''
+                        }
+                        else {
+                                sh '''
+                                        echo Preparing Artifacts for ${COMPONENT}                      
+                                '''
+                        }
+                }
+                
+                stage('Upload Artifacts') {
+                        if(env.APP_TYPE == "nodejs"){
+                                sh '''
+                                        echo Preparing Artifact for ${COMPONENT}
+                                        npm install
+                                        zip ${COMPONENT}-${TAG_NAME}.zip node_modules server.js                        
+                                '''
+                        }
+                
+                }
+        }
+}
+            
+
+
+
