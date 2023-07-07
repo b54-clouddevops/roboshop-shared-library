@@ -42,3 +42,10 @@ def sonarChecks(){
            sh 'echo Sonar Checks Completed'        
         }
 }
+
+
+def testCases() {
+        stage('Test Cases') {
+                
+        }
+}
