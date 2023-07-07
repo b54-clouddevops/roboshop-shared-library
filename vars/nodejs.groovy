@@ -1,13 +1,10 @@
-def lintChecks(){
-    sh ''' 
-        echo Installing JSLint for ${COMPONENT}
-        npm i jslint
-        node_modules/jslint/bin/jslint.js server.js || true
-        echo lint checks completed for ${COMPONENT}
-    ''' 
+def call() {
+    node {
+        common.lintChecks()
+    }
 }
 
-
+/*    Uncommen this to use the declarative approach
 def call(COMPONENT) {
     pipeline {
         agent {  label 'WS' }
@@ -107,3 +104,5 @@ def call(COMPONENT) {
         }                                                                             
     }
 }
+
+*/
