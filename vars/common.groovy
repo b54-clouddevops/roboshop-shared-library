@@ -95,6 +95,7 @@ def artifacts() {
                                 sh '''
                                         echo Preparing Artifacts for ${COMPONENT}
                                         ls -ltr
+                                        cd ${COMPONENT}
                                         mvn clean package
                                         ls -ltr
                                         mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar
