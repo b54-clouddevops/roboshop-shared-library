@@ -48,3 +48,9 @@ Reference : `https://www.jenkins.io/doc/book/pipeline/shared-libraries/`
 
 *** When you can to access a function in a file sample, and if you're referring from somewhere, then you call it as `sample.functionName()`
 *** When you can to access a function in a file sample, and if you're referring from the same file, then you call it as `functionName()`
+
+
+
+### Outstanding Iteam
+** On Scripted Pipeline, we need to ensure if the artifact is there, then I don't want to prepare the artifact.
+We achieved this through declarative pipeline, while scripted pipeline turned out to be a challenge.
