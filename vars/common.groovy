@@ -94,8 +94,12 @@ def artifacts() {
                         else if(env.APP_TYPE == "java"){
                                 sh '''
                                         echo Preparing Artifacts for ${COMPONENT}
+                                        ls -ltr
+                                        cd ${COMPONENT}
+                                        ls -ltr
+                                        mvn clean compile
                                         mvn clean package
-                                        
+
                                         mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar
                                         zip -r ${COMPONENT}-${TAG_NAME}.zip  ${COMPONENT}.jar          
                                 '''
