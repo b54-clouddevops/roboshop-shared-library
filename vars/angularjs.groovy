@@ -9,8 +9,7 @@ def call() {
             common.artifacts()
         }
     }
-}          
-        
+}               
 
 // def lintChecks(){
 //     sh ''' 
