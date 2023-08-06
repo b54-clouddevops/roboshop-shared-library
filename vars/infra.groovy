@@ -10,18 +10,18 @@ def call() {
             git branch: 'main', url: "https://github.com/b54-clouddevops/${REPONAME}.git"
             
             stage('terraform init') {
-                sh "cd ${TFDIR}"
+                sh "cd ${REPONAME}"
                 sh "terrafile -f env-${ENV}/Terrafile"
                 sh "terraform init -backend-config=env-${ENV}/${ENV}-backend.tfvars"            
             }
 
             stage('terraform plan') {
-                sh "cd ${TFDIR}"
+                sh "cd ${REPONAME}"
                 sh "terraform plan -var-file=env-${ENV}/${ENV}.tfvars"
             }
 
             stage('Terraform Action') {
-                sh "terraform ${ACTION} -auto-approve -var-file=env-${ENV}/${ENV}.tfvars"
+                sh "terraform ${REPONAME} -auto-approve -var-file=env-${ENV}/${ENV}.tfvars"
                 }
             }
         }
