@@ -11,6 +11,7 @@ def call() {
             
             stage('terraform init') {
                 sh "cd ${TFDIR}"
+                sh "ls -ltr"
                 sh "terrafile -f env-${ENV}/Terrafile"
                 sh "terraform init -backend-config=env-${ENV}/${ENV}-backend.tfvars"            
             }
