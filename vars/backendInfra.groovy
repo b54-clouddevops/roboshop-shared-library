@@ -2,7 +2,8 @@ def call() {
     properties([
             parameters([
                 choice(choices: 'dev\nprod', description: "Select your environment", name: "ENV"),
-                choice(choices: 'apply\ndestroy', description: "Chose an action", name: "ACTION")
+                choice(choices: 'apply\ndestroy', description: "Chose an action", name: "ACTION"),
+                string(choices: 'APP_VERSION', description: "Enter your backend version", name: "APP_VERSION")
             ]),
         ])
     node {
@@ -21,14 +22,14 @@ def call() {
             stage('terraform plan') {
                 sh '''
                     cd ${TFDIR}
-                    terraform plan -var-file=env-${ENV}/${ENV}.tfvars
+                    terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=${APP_VERSION}
                 ''' 
             }
 
             stage('Terraform Action') {
                 sh '''
                     cd ${TFDIR}
-                    terraform ${ACTION} -auto-approve -var-file=env-${ENV}/${ENV}.tfvars
+                    terraform ${ACTION} -auto-approve -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=${APP_VERSION}
                 '''
                 }
             }
